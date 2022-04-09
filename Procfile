@@ -1,0 +1,1 @@
+web: gunicorn waridi.wsgi
