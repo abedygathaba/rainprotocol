@@ -1,28 +1,18 @@
 from django.db import models
+from cloudinary.models import CloudinaryField
+from django.contrib.auth.models import User
 
 # Create your models here.
-class Doctor(models.Model):
-    fullname = models.CharField(max_length=300)
-    specializations = models.CharField(max_length=300)
-    hospital = models.CharField(max_length=300)
-    location = models.CharField(max_length=255)
+
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    businessName = models.CharField(max_length=200)
+    location = models.CharField(max_length=200)
+    bio = models.TextField(max_length=500, blank=True)
+    profile_pic = CloudinaryField('image')
+    created_at = models.DateTimeField(auto_now_add=True)
     
+
     def __str__(self):
-        return self.fullname
-
-
-
-class Records(models.Model):
-    full_name = models.CharField(max_length=270)
-    dateOfBirth = models.DateField()
-    GENDER_CHOICES = (
-        ('M', 'Male'),
-        ('F', 'Female'),
-    )
-
-    gender = models.CharField(max_length=1, choices=GENDER_CHOICES)
-    doctor = models.ForeignKey(Doctor,  on_delete=models.CASCADE)
-    
-    def __str__(self):
-        return self.full_name
+        return self.user  
     

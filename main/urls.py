@@ -5,10 +5,12 @@ from django.conf.urls.static import static
 
 
 urlpatterns = [
-    path('doctor/', views.DoctorList.as_view()),
-    path('doctor/<int:pk>',views.DoctorDetail.as_view()),
-    path('records/', views.RecordList.as_view()),
-    path('records/<int:pk>',views.RecordDetail.as_view()),
+    
+    path('users/create/', views.UserCreate.as_view()), # create user
+    path('login/', views.loginUser.as_view()), # login user
+    path('logout/', views.logoutUser.as_view()), # logout user
+    path('api/profiles/', views.Profile.as_view()), # list of profiles
+    path('api/profiles/<int:pk>', views.ProfileDetail.as_view()), # single profile
     
     
 ]
