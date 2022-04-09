@@ -1,1 +1,1 @@
-web: gunicorn waridi.wsgi -- log-file -
+web: gunicorn waridi.wsgi
